@@ -1,13 +1,267 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import Layout from "@/components/Layout";
+import {
+  Search, FileText, MapPin, BarChart3, Link2, PenTool, Settings, TrendingUp,
+  Star, ArrowRight, CheckCircle, Users, Globe, Target
+} from "lucide-react";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } }),
+};
+
+const services = [
+  { icon: Settings, title: "Technical SEO", desc: "Site speed, crawlability & indexing optimization" },
+  { icon: FileText, title: "On-Page SEO", desc: "Content, meta tags & internal linking" },
+  { icon: MapPin, title: "Local SEO", desc: "Google Business Profile & local rankings" },
+  { icon: BarChart3, title: "SEO Audit & Strategy", desc: "In-depth analysis & growth roadmap" },
+  { icon: Search, title: "Keyword Research", desc: "High-intent keyword targeting" },
+  { icon: Link2, title: "Link Building", desc: "Authority-boosting backlink strategies" },
+  { icon: PenTool, title: "Content Optimization", desc: "SEO-driven content that converts" },
+  { icon: TrendingUp, title: "Monthly Management", desc: "Ongoing optimization & reporting" },
+];
+
+const stats = [
+  { value: "500+", label: "Keywords Ranked" },
+  { value: "200%", label: "Avg Traffic Growth" },
+  { value: "150+", label: "Clients Served" },
+  { value: "98%", label: "Client Retention" },
+];
+
+const testimonials = [
+  { name: "James Mitchell", role: "CEO, TechStart Inc.", quote: "Savannah doubled our organic traffic in just 4 months. Her strategic approach to SEO is unlike anything we've experienced before.", rating: 5 },
+  { name: "Rachel Thompson", role: "Owner, Bloom Boutique", quote: "Our local search visibility skyrocketed. We went from page 3 to the top 3 in Google Maps. Incredible results!", rating: 5 },
+  { name: "David Chen", role: "Marketing Director, GrowthLab", quote: "The ROI from Savannah's SEO work has been phenomenal. She truly understands search engines and user intent.", rating: 5 },
+];
+
+const caseStudies = [
+  { title: "E-Commerce Store", before: "2,500", after: "15,000", metric: "Monthly Visitors", growth: "500%" },
+  { title: "Local Service Business", before: "Page 5", after: "Top 3", metric: "Google Rankings", growth: "340%" },
+  { title: "SaaS Company", before: "$5K", after: "$45K", metric: "Monthly Revenue from SEO", growth: "800%" },
+];
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <Layout>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-secondary py-20 lg:py-32">
+        <div className="container">
+          <div className="mx-auto max-w-3xl text-center">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary"
+            >
+              SEO Expert & Organic Growth Strategist
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              className="text-4xl font-bold leading-tight text-foreground md:text-5xl lg:text-6xl"
+            >
+              Rank Higher. Get More Traffic.{" "}
+              <span className="text-primary">Grow Faster.</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="mt-6 text-lg leading-relaxed text-muted-foreground"
+            >
+              I help businesses dominate search results with proven SEO strategies
+              that drive real, measurable growth. Let's turn your website into your
+              #1 revenue channel.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+            >
+              <Button size="lg" asChild>
+                <Link to="/contact">Book a Free SEO Audit</Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link to="/contact">Get Strategy Call <ArrowRight size={16} /></Link>
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="border-b border-border bg-background py-12">
+        <div className="container">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                className="text-center"
+              >
+                <p className="font-display text-3xl font-bold text-primary md:text-4xl">{stat.value}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="py-20">
+        <div className="container">
+          <div className="mx-auto mb-12 max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-foreground md:text-4xl">SEO Services That Drive Results</h2>
+            <p className="mt-4 text-muted-foreground">Comprehensive search engine optimization tailored to your business goals.</p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {services.map((service, i) => (
+              <motion.div
+                key={service.title}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+              >
+                <Card className="group h-full border-border/50 transition-all hover:border-primary/30 hover:shadow-lg">
+                  <CardContent className="p-6">
+                    <div className="mb-4 inline-flex rounded-lg bg-secondary p-3 text-primary">
+                      <service.icon size={24} />
+                    </div>
+                    <h3 className="mb-2 font-display text-lg font-semibold text-foreground">{service.title}</h3>
+                    <p className="text-sm text-muted-foreground">{service.desc}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Button variant="outline" asChild>
+              <Link to="/services">View All Services <ArrowRight size={16} /></Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="bg-secondary py-20">
+        <div className="container">
+          <div className="mx-auto mb-12 max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-foreground md:text-4xl">What Clients Say</h2>
+            <p className="mt-4 text-muted-foreground">Real results from real businesses.</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={t.name}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+              >
+                <Card className="h-full">
+                  <CardContent className="p-6">
+                    <div className="mb-4 flex gap-1">
+                      {Array.from({ length: t.rating }).map((_, j) => (
+                        <Star key={j} size={16} className="fill-primary text-primary" />
+                      ))}
+                    </div>
+                    <p className="mb-4 text-sm leading-relaxed text-muted-foreground">"{t.quote}"</p>
+                    <div>
+                      <p className="font-semibold text-foreground">{t.name}</p>
+                      <p className="text-xs text-muted-foreground">{t.role}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case Study Highlights */}
+      <section className="py-20">
+        <div className="container">
+          <div className="mx-auto mb-12 max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-foreground md:text-4xl">Proven Results</h2>
+            <p className="mt-4 text-muted-foreground">Real numbers from real client campaigns.</p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {caseStudies.map((cs, i) => (
+              <motion.div
+                key={cs.title}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+              >
+                <Card className="overflow-hidden">
+                  <div className="bg-primary p-4 text-center">
+                    <p className="text-2xl font-bold text-primary-foreground">{cs.growth}</p>
+                    <p className="text-xs text-primary-foreground/80">Growth</p>
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="mb-3 font-display text-lg font-semibold text-foreground">{cs.title}</h3>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Before:</span>
+                        <span className="font-medium text-foreground">{cs.before}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">After:</span>
+                        <span className="font-medium text-primary">{cs.after}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Metric:</span>
+                        <span className="font-medium text-foreground">{cs.metric}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Button variant="outline" asChild>
+              <Link to="/case-studies">View All Case Studies <ArrowRight size={16} /></Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-primary py-20">
+        <div className="container">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-primary-foreground md:text-4xl">
+              Ready to Dominate Search Results?
+            </h2>
+            <p className="mt-4 text-primary-foreground/80">
+              Get a free SEO audit and discover exactly how to outrank your competitors.
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <Button size="lg" variant="secondary" asChild>
+                <Link to="/contact">Book Your Free Audit</Link>
+              </Button>
+              <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10" asChild>
+                <Link to="/contact">Get Strategy Call</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </Layout>
   );
 };
 
