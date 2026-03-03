@@ -50,7 +50,8 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-primary" />
-                <span>1014 Oak Street, Burnet, TX 78611</span>
+                <span>1014 Oak Street, Burnet, TX 78611,United States of America
+                </span>
               </li>
             </ul>
           </div>

@@ -123,7 +123,7 @@ const Contact = () => {
                       <MapPin size={18} className="mt-0.5 shrink-0 text-primary" />
                       <div>
                         <p className="text-sm font-medium text-foreground">Address</p>
-                        <p className="text-sm text-muted-foreground">1014 Oak Street, Burnet, TX 78611</p>
+                        <p className="text-sm text-muted-foreground">1014 Oak Street, Burnet, TX 78611,United States of America</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
